@@ -35,7 +35,9 @@ class SessionHistory:
 class ChatBotBackend:
     """Class to handle the backend of the chatbot."""
 
-    def __init__(self, session_history=None):
+    def __init__(self, session_id, session_history=None):
+        """Initialize the chatbot backend."""
+        self.session_id = session_id
         self.chat_bedrock = ChatBedrock(
             credentials_profile_name=PROFILE_NAME,
             model_id=MODEL_ID,
@@ -45,26 +47,12 @@ class ChatBotBackend:
         self.session_history = session_history or SessionHistory()
         self.with_message_history = RunnableWithMessageHistory(
             self.chat_bedrock,
-            self.session_history.get_session_history,
+            lambda: self.session_history.get_session_history(self.session_id),
         )
 
-    def get_response(self, user_input: str, session_id: str) -> str:
+    def get_response(self, user_input: str) -> str:
         """Get the response from the chatbot."""
         message = [HumanMessage(content=user_input)]
-        config = {"configurable": {"session_id": session_id}}
 
-        response = self.with_message_history.invoke(message, config=config)
+        response = self.with_message_history.invoke(message)
         return response.content
-
-
-if __name__ == "__main__":
-    chatbot_backend = ChatBotBackend()
-    input_user = "Hello, how are you? My name is John."
-    session_id = "1234"
-    response = chatbot_backend.get_response(input_user, session_id)
-    print(response)
-
-    input_user = "What is my name?"
-    response = chatbot_backend.get_response(input_user, session_id)
-    print(response)
-
