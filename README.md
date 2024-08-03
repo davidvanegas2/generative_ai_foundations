@@ -8,6 +8,7 @@ This repository is dedicated to exploring Generative AI on AWS with the help of 
 - [Use Cases](#use-cases)
   - [Poster Generation with Stability's Stable Diffusion Model](#poster-generation-with-stabilitys-stable-diffusion-model)
   - [Summarization of Manufacturing Logs with Cohere's Command Model](#summarization-of-manufacturing-logs-with-coheres-command-model)
+  - [Chatbot Creation with Message History and RAG Implementation](#chatbot-creation-with-message-history-and-rag-implementation)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -61,6 +62,19 @@ This repository contains implementations of various use cases utilizing Generati
     ```
 
 2. Follow the instructions in the `README.md` file within the folder to set up and run the summarization example.
+
+### Chatbot Creation with Message History and RAG Implementation
+**Folder:** `RAG_chatbot_HR`
+
+**Description:** This use case demonstrates the creation of a chatbot that maintains message history and integrates Retrieval-augmented Generation (RAG) for enhanced responses. RAG combines generative models with retrieval-based approaches to provide more accurate and contextually relevant answers.
+
+**Instructions:**
+1. Navigate to the `RAG_chatbot_HR` folder:
+    ```sh
+    cd chatbot_with_rag
+    ```
+
+2. Follow the instructions in the `README.md` file within the folder to set up and run the chatbot example. This will include setting up message history storage, configuring the RAG system, and testing the chatbot functionality.
 
 ## Prerequisites
 - Python 3.7+
