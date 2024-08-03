@@ -8,7 +8,6 @@ from langchain_core.chat_history import (
 from langchain_core.messages import HumanMessage
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_aws import ChatBedrock
-import streamlit as st
 
 PROFILE_NAME = os.getenv("AWS_PROFILE_NAME", "default")
 MODEL_ID = os.getenv("AWS_MODEL_ID", "meta.llama3-8b-instruct-v1:0")
