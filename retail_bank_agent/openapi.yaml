@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: Retail Bank Agent
+  version: 1.0.0
+  description: This is a Retail Bank Agent API
+paths:
+  /getAccountStatus/{accountNumber}:
+    get:
+      summary: Get Account Status
+      description: Get the status of an account
+      parameters:
+        - name: accountNumber
+          in: path
+          required: true
+          description: Account number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Account status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AccountStatus:
+                    type: string
+                  AccountID:
+                    type: integer
+                  Reason:
+                    type: string
+                  AccountName:
+                    type: string
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: string
